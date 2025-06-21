@@ -1,0 +1,113 @@
+
+
+      <!-- header start -->
+      <header class="main_header_area">
+        <div class="header-content">
+          <div class="container">
+            <div class="links links-left">
+              <ul>
+                <li>
+                  <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> infohotux.com.np</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> 977-222-333-444</a>
+                </li>
+                <li>
+                  <select class="wide">
+                    <option>Eng</option>
+                    <option>Fra</option>
+                    <option>Esp</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+            <div class="links links-right pull-right">
+              <ul>
+              
+                <li>
+                
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation Bar -->
+        <div class="header_menu affix-top">
+          <div class="container">
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                  <img alt="Image" src="images/logo.png" class="logo-white" />
+                  <img alt="Image" src="images/logo-black.png" class="logo-black" />
+                </a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="responsive-menu">
+                  <li class="dropdown submenu">
+                    <a [routerLink]="['/home']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                      >Home</a>
+                   
+                  </li>
+                  <li class="submenu dropdown">
+                    <a [routerLink]="['/about']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                      >About Us</a>
+                   
+                  </li>
+                  <li class="submenu dropdown">
+                    <a [routerLink]="['/rooms']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                      >Rooms</a>
+                    
+                  </li>
+                  <li class="submenu dropdown">
+                    <a [routerLink]="['/events']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                      >Events</a>
+                   
+                  </li>
+                
+                  <li class="submenu dropdown">
+                    <a [routerLink]="['/contact']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                      >contact</a>
+                   
+                  </li>
+                  <li class="submenu dropdown" *ngIf="!isLoggedIn()">
+                    <a href=""routerLink="/register"
+                    >Register</a>
+                   
+                  </li>
+                 
+                  <li class="submenu dropdown" *ngIf="isLoggedIn()">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                    >my account<i class="fa fa-angle-down" aria-hidden="true"></i
+                        ></a>
+                    <ul class="dropdown-menu" >
+                        <li *ngIf="isLoggedIn()"><p>{{ userInfo?.firstName }}</p>
+                        </li>
+                        <li *ngIf="isLoggedIn()"><a [routerLink]="['/client/profil']"
+                          > my account</a>
+                        </li>
+                       
+
+                    </ul>
+                    
+                </li>
+                <div class="nav-btn"*ngIf="isLoggedIn()" >
+                  <a (click)="logout()" class="btn btn-orange"> Logout</a>
+                </div>
+                <div class="nav-btn" *ngIf="!isLoggedIn()">
+                  <a [routerLink]="['/auth/login']" class="btn btn-orange">login</a>
+                </div>
+                </ul>
+               
+               
+              </div>
+              <!-- /.navbar-collapse -->
+              <div id="slicknav-mobile"></div>
+            </nav>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- Navigation Bar Ends -->
+      </header>
+      <!-- header Ends -->

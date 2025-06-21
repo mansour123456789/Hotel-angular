@@ -1,0 +1,412 @@
+
+
+
+
+
+
+
+<app-navbar></app-navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- breadcrumbs starts -->
+ <section class="breadcrumb-outer">
+    <div class="container">
+      <div class="breadcrumb-content">
+        <h2>MY ACOUNT</h2>
+        <nav aria-label="breadcrumb">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ACOUNT</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumbs Ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<div class="modal fade" id="addslider" tabindex="-1" aria-labelledby="addslider" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Reclamation</h5>
+            </div>
+            <div class="modal-body">
+                <form class="forms-sample" th:action="@{/addreclamation}" th:object="${reclamation}" method="post">
+
+                    <div class="mb-3">
+                        <input type="hidden" id="tinymceExample"   th:field="*{validation}"/>
+                        <label for="category" class="form-label"> Message</label>
+                        <textarea class="form-control"   name="tinymce"  th:field="*{messages}"  rows="10"></textarea>
+
+                    </div>
+
+
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary"><i class="link-icon" data-feather="plus"></i> Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- breadcrumb Ends -->
+
+<!-- about starts -->
+<section class="content reservation-main">
+    <div class="page-content">
+        <div class="row">
+            <div class="d-flex justify-content-between align-items-center position-absolute bottom-10 w-100 px-3 ms-4">
+
+            </div>
+        </div>
+        <div class="row profile-body">
+            <!-- left wrapper start -->
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <div class="card rounded">
+                    <div class="card-body">
+                        <div>
+                            <img class="wd-70 rounded-circle" [src]="currentuser.photo"  alt="profile" />
+                            <span class="h4 ms-2 bg-white rounded p-2 px-3" > {{currentuser.firstName}}</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+
+                        </div>
+                        <br>
+
+                        <div class="mt-3">
+                            <label class="fw-bolder mb-0 text-uppercase">firstName:</label>
+                            <p >{{currentuser.firstName}}</p>
+                        </div>
+                        <div class="mt-3">
+                            <label class="fw-bolder mb-0 text-uppercase">lastName:</label>
+                            <p >{{currentuser.lastName}}</p>
+                        </div>
+                        <div class="mt-3">
+                            <label class="fw-bolder mb-0 text-uppercase">Email:</label>
+                            <p >{{currentuser.email}}</p>
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </div>
+            <!-- left wrapper end -->
+            <!-- middle wrapper start -->
+            <div class="col-md-8">
+                <div class="card">
+
+
+
+
+
+
+
+
+
+
+                    <div id="exTab1">
+                        <ul class="nav nav-pills" id="pills-tab">
+                            <li class="nav-item">
+                                <button class="nav-link active" id="pills-1a" data-bs-toggle="pill" data-bs-target="#a1a" aria-controls="a1a" aria-selected="true">
+                                    Update profile
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="pills-2a" data-bs-toggle="pill" data-bs-target="#a2a" aria-controls="a2a" aria-selected="false">
+                                    Historique
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="pills-3a" data-bs-toggle="pill" data-bs-target="#a3a" aria-controls="a3a" aria-selected="false">
+                                    chat hotel
+                                </button>
+                            </li>
+
+
+                        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="tab-content clearfix" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="a1a" role="tabpanel" aria-labelledby="pills-1a" tabindex="0">
+                                <div class="card-body">
+                                    
+                                    <div class="card">
+                                        <h2>My Profile</h2>
+                                    
+                                        <div class="profile-header">
+                                          <div class="profile-picture-container">
+                                            <div class="profile-picture">
+                                              <!-- Property binding for img src -->
+                                              <img [src]="currentuser.photo" alt="Profile Picture">
+                                            </div>
+                                            <div class="profile-picture-upload">
+                                              <!-- Hidden file input with change event -->
+                                              <input type="file"
+                                                     #fileInput
+                                                     (change)="onFileSelected($event)"
+                                                     accept=".png,.jpg,.jpeg,.gif"
+                                                     hidden>
+                                              <!-- Proxy click to hidden input -->
+                                              <button class="upload-button"
+                                                      (click)="fileInput.click()">
+                                                Change Photo
+                                              </button>
+                                              <div class="upload-info">
+                                                JPG, PNG or GIF<br>Max 5MB
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    
+                                        <div class="profile-form">
+                                          <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <!-- Two-way binding -->
+                                            <input type="text"
+                                                   id="firstName"
+                                                   name="firstName"
+                                                   [(ngModel)]="currentuser.firstName">
+                                          </div>
+                                    
+                                          <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <!-- Two-way binding -->
+                                            <input type="text"
+                                                   id="lastName"
+                                                   name="lastName"
+                                                   [(ngModel)]="currentuser.lastName">
+                                          </div>
+                                    
+                                          <div class="form-group full-width">
+                                            <label for="email">Email Address</label>
+                                            <!-- Bind and disable email -->
+                                            <input type="email"
+                                                   id="email"
+                                                   name="email"
+                                                   [(ngModel)]="currentuser.email"
+                                                   disabled>
+                                          </div>
+                                    
+                                          <div class="form-group">
+                                            <label for="oldPassword">Current Password</label>
+                                            <!-- Two-way bind to oldPassword -->
+                                            <input type="password"
+                                                   id="oldPassword"
+                                                   name="oldPassword"
+                                                   [(ngModel)]="oldPassword"
+                                                   placeholder="Enter current password">
+                                          </div>
+                                    
+                                          <div class="form-group">
+                                            <label for="newPassword">New Password</label>
+                                            <!-- Two-way bind to newPassword -->
+                                            <input type="password"
+                                                   id="newPassword"
+                                                   name="newPassword"
+                                                   [(ngModel)]="newPassword"
+                                                   placeholder="Enter new password">
+                                          </div>
+                                        </div>
+                                    
+                                        <div class="button-container">
+                                          <!-- Save click and disable while saving -->
+                                          <button (click)="saveChanges()"
+                                                  [disabled]="saving">
+                                            {{ saving ? 'Saving…' : 'Save Changes' }}
+                                          </button>
+                                        </div>
+                                    
+                                        <!-- Conditional feedback -->
+                                        <p *ngIf="message">{{ message }}</p>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="a2a" role="tabpanel" aria-labelledby="pills-2a" tabindex="0">
+                                <div class="card">
+                                    <h2>My Reservations</h2>
+                                    
+                                    <div class="reservation" *ngFor="let reservation of reservations" >
+                                       
+                                        <div class="reservation-details" >
+                                            <h3 class="reservation-title">reservation Room ID : {{reservation.roomId}}</h3>
+                                            <div class="reservation-meta">
+                                                <div class="reservation-meta-item">
+                                                    <span>📅</span>
+                                                    <span>{{reservation.checkin}}</span>
+                                                </div>
+                                                <div class="reservation-meta-item">
+                                                    <span>📅</span>
+                                                    <span>{{reservation.checkout}}</span>
+                                                </div>
+                                                <div class="reservation-meta-item">
+                                                    <span>🛏️ PRIX</span>
+                                                    <span>${{reservation.price}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="reservation-status confirmed" *ngIf="reservation.status !== 'Pending'">{{reservation.status}}</span>
+                                            <span class="reservation-status" *ngIf="reservation.status === 'Pending'">Pending </span>
+                                                <p>Reservation #: {{reservation.id}}</p>
+                                                <button class="support-button" (click)="printReservation(reservation)">imprim reservation</button>
+                                        </div>
+                                    </div>
+                                    
+                                
+                                </div>
+                            </div>
+                    
+                            <div class="tab-pane fade" id="a3a" role="tabpanel" aria-labelledby="pills-3a" tabindex="0">
+                                   <!-- Contact Support Section -->
+        <div class="card support-card">
+           
+            <div class="chat-container" *ngIf="userId ; else noReservations">
+                <div class="chat-header">Conversation</div>
+                <div class="chat-box"  class="chat-messages" >
+                  <div *ngFor="let msg of messages" class="message" [ngClass]="{ 'sent': msg.senderId === userId, 'received': msg.senderId !== userId }">
+                    <div>
+                      <strong>{{ msg.senderId === userId ? 'Moi' : 'Admin '  }}:</strong> 
+                      {{ msg.content }}
+                    </div>
+                    <small>{{ msg.timestamp | date:'short' }}</small>
+                  </div>
+                  
+                  
+                </div>
+                <div class="chat-input">
+                  <input [(ngModel)]="message" type="text" placeholder="Écris un message..." (keyup.enter)="sendMessage()" />
+                  <button (click)="sendMessage()">Envoyer</button>
+                </div>
+            </div>
+            <ng-template #noReservations>
+                <div class="support-info">
+               
+                    <h2>Need Help?</h2>
+                    <p>Our customer support team is available 24/7 to assist you with any questions or issues regarding your bookings.</p>
+                </div>
+                <button class="support-button" (click)="user()">Contact Support</button>
+              </ng-template>
+        </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Sélectionnez tous les boutons Add Reclamation
+        const buttons = document.querySelectorAll('.btn.btn-primary[data-bs-toggle="modal"]');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Récupérer la valeur du data-id
+                const reservationId = this.getAttribute('data-id');
+
+                // Insérer la valeur dans le champ textarea
+                const textArea = document.querySelector('#tinymceExample');
+                if (textArea) {
+                    textArea.value = `${reservationId}`;
+                }
+            });
+        });
+    });
+
+
+</script>
+
+

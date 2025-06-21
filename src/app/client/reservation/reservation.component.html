@@ -1,0 +1,637 @@
+
+
+<app-navbar></app-navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- breadcrumbs starts -->
+ <section class="breadcrumb-outer">
+    <div class="container">
+      <div class="breadcrumb-content">
+        <h2>Room Details With Sidebar</h2>
+        <nav aria-label="breadcrumb">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Room Details 2</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumbs Ends -->
+
+  <!-- details starts -->
+  <section class="details">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="detail-slider">
+            <div class="slider-1 slider-for">
+              <div class="detail-slider-item">
+                <img [src]="room.thumbnail" alt="image" />
+              </div>
+            
+            </div>
+            <div class="slider-1 slider-nav">
+            
+             
+            </div>
+          </div>
+          <div class="detail-content">
+            <div class="detail-title">
+              <div class="title-left">
+                <h3>{{ room.name }} Room</h3>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </div>
+              <div class="title-right pull-right">
+                <ul>
+                  <li class="facebook"><i class="fab fa-facebook"></i></li>
+                  <li class="twitter"><i class="fab fa-twitter"></i></li>
+                  <li class="linkedin"><i class="fab fa-linkedin"></i></li>
+                  <li class="pinterest"><i class="fab fa-pinterest"></i></li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="exTab1">
+              <ul class="nav nav-pills" id="pills-tab">
+                <li class="nav-item">
+                  <button class="nav-link active" id="pills-1a" data-bs-toggle="pill" data-bs-target="#a1a" aria-controls="a1a" aria-selected="true">
+                    Overview
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="pills-2a" data-bs-toggle="pill" data-bs-target="#a2a" aria-controls="a2a" aria-selected="false">
+                    Price/Rate
+                  </button>
+                </li>
+               
+                <li class="nav-item">
+                  <button class="nav-link" id="pills-5a" data-bs-toggle="pill" data-bs-target="#a5a" aria-controls="a5a" aria-selected="false">
+                    Reviews(3)
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content clearfix" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="a1a" role="tabpanel" aria-labelledby="pills-1a" tabindex="0">
+                  <div class="detail-overview detail-box">
+                    <h4>Overview and Amenities</h4>
+                    <p>
+                        {{ room.description }} </p>
+                   
+                    
+                    <ul class="amenities">
+                      <li *ngFor="let service of services"> <input type="checkbox" 
+                        class="form-check-input" 
+                        [value]="service.price" 
+                        (change)="onServiceChange(service.price, $event)"
+                        id="service-{{service.name}}"
+                        > {{ service.name }}<span style="color: #ff5722; font-weight: 500; font-size: 14px; margin-left: 22px;">+${{ service.price }}</span></li>
+                    
+                    </ul>
+                  
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="a2a" role="tabpanel" aria-labelledby="pills-2a" tabindex="0">
+                  <div class="price-table detail-box">
+                    <h4>Price and Rates(/Night)</h4>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <td>Sun</td>
+                          <td>Mon</td>
+                          <td>Tues</td>
+                          <td>Wed</td>
+                          <td>Thurs</td>
+                          <td>Fri</td>
+                          <td>Sat</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                          <td>${{ room.price }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              
+                
+                <div class="tab-pane fade" id="a5a" role="tabpanel" aria-labelledby="pills-5a" tabindex="0">
+                  <div class="detail-review">
+                    
+                    <div class="review-outer">
+                        <div class="comments-list">
+                            <h4 style="margin-top: 0; margin-bottom: 20px; color: #333; font-weight: 600; font-size: 18px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Recent Reviews</h4>
+                            <div class="sort-controls" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px; ">
+                                <label for="sortReviews" style="font-weight: 600; color: #333; width: 100px;">Sort by:</label>
+                                <select id="sortReviews" 
+                                (change)="onSortChange($any($event.target).value)"
+                                style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ddd; font-size: 15px; width: 300px;">
+                          <option value="newest">Newest</option>
+                          <option value="oldest">Oldest</option>
+                          <option value="mostPositive">Most Positive</option>
+                          <option value="mostNegative">Most Negative</option>
+                        </select>
+                        
+                              </div>
+                              
+                        
+                         
+                        </div>
+                      <ul>
+                        <li>
+                         
+                          <div *ngIf="reviews && reviews.length === 0" style="display: grid; place-items: center; padding: 30px 0; color: #666; background-color: #f9f9f9; border-radius: 8px;">
+                            <p style="margin: 0; font-size: 16px; text-align: center;">No reviews yet. Be the first to share your experience!</p>
+                          </div>
+                          <div class="review-item" *ngFor="let review of reviews">
+                            <div class="review-image">
+                                <div style="width: 48px; height: 48px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <span style="color: #666; font-weight: 600; font-size: 28px;">
+                                        {{ (review.firstname?.[0] || 'G') + (review.lastname?.[0] || 'U') }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                              <h5>  {{ review.firstname || 'Guest' }} {{ review.lastname || 'User' }}  <span class="date">{{ review.createdAt | date:'MMM d, y' }} |</span>  <span class="rating" style="color: #ff9800; font-size: 18px; justify-self: end;">
+                                <span *ngFor="let star of [1,2,3,4,5]">
+                                    {{ star <= review.rating ? '★' : '☆' }}
+                                </span>
+                                <span style="color: #666; font-size: 15px; margin-left: 5px;">{{ review.rating }}.0</span>
+                            </span></h5>
+                             
+                                
+                               
+                          
+                       
+                              <p class="date"> <button type="button" *ngIf="(isLoggedIn && (review.userid === currentUser.id ) || (admin))" 
+                                (click)="deleteReview(review.reviewid)"
+                                style="padding: 6px 8px; background-color: #f44336; color: white; border: none; border-radius: 4px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease; display: flex; align-items: center; gap: 5px;">
+                                <i class="fa fa-reply" aria-hidden="true"></i>  
+                            Delete 
+                    </button></p>
+                              <h6> TITEL :{{ review.title }} </h6>
+                              <p>
+                                {{ review.text }}.
+                              </p>
+                            </div>
+                          </div>
+                        
+                        </li>
+                       
+                      </ul>
+                      <div *ngIf="reviews && reviews.length === 0">
+                        Aucun avis
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <h4>Leave a message</h4>
+                      <form [formGroup]="reviewForm" (ngSubmit)="onReviewSubmit()">
+                        <div class="row">
+                          <div class="form-group col-xs-6">
+                            <input  type="text" id="comment-title" formControlName="title"  class="form-control"  placeholder="Titel" />
+                          </div>
+                         
+                        
+                          <div class="textarea col-xs-12">
+                            <textarea placeholder="Enter a message" id="comment-text" rows="4" formControlName="text" ></textarea>
+                          </div>
+                          <div class="form-group col-xs-6">
+                           
+                            <div class="rating-selector" style="display: grid; grid-template-columns: repeat(5, auto); grid-gap: 8px; width: fit-content;">
+                                <div *ngFor="let star of [1,2,3,4,5]" 
+                                     class="star" 
+                                     [class.active]="star <= reviewForm.get('rating')?.value"
+                                     (click)="reviewForm.get('rating')?.setValue(star)"
+                                     style="font-size: 28px; color: #ddd; cursor: pointer; transition: color 0.2s ease;"
+                                     [ngStyle]="{'color': star <= reviewForm.get('rating')?.value ? '#ff9800' : '#ddd'}">
+                                    ★
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12">
+                            <div *ngIf="errorMessage" style="color: #dc3545; font-size: 14px; padding: 10px; background-color: #fff8f8; border-radius: 4px;">
+                                {{ errorMessage }}
+                            </div>
+    
+                            <div class="comment-btn">
+                                <button type="submit" 
+                                style="padding: 14px 25px; background-color: #ff5722; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 2px 6px rgba(255,87,34,0.3);"
+                                [disabled]="reviewForm.invalid">
+                            SUBMIT REVIEW
+                        </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="detail-sidebar">
+            <div class="sidebar-form reservation-form">
+              <div class="form-price">
+                <img src="images/icons/bed-orange.png" alt="image" />
+                <div class="title-price">
+                  <h2>${{ room.price }}<span>/Night</span></h2>
+                </div>
+              </div>
+
+              <div class="banner-form form-style-2">
+                <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+                <div class="form-content">
+                  <div class="form-content-inner">
+                    <div class="table-item">
+                       
+                      <div class="form-group">
+
+                          <div class="date-range-container" style="position: relative;">
+                                <mat-form-field style="width: 100%; font-size: 16px;">
+                                    <mat-label style="font-weight: 500; font-size: 16px; color: #444;">Select Your Stay Dates</mat-label>
+                                    <mat-date-range-input 
+                                        [formGroup]="reservationForm" 
+                                        [rangePicker]="picker" 
+                                        [dateFilter]="dateFilter" 
+                                        style="font-size: 16px; padding: 8px 0;">
+                                        <input 
+                                            matStartDate 
+                                            formControlName="checkin" 
+                                            placeholder="Check-in date" 
+                                            style="font-size: 16px; color: #333; font-weight: 500;">
+                                        <input 
+                                            matEndDate 
+                                            formControlName="checkout" 
+                                            placeholder="Check-out date" 
+                                            style="font-size: 16px; color: #333; font-weight: 500;">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle 
+                                        matIconSuffix 
+                                        [for]="picker" 
+                                        style="transform: scale(1.2); margin-right: 8px; color: #ff5722;">
+                                    </mat-datepicker-toggle>
+                                    <mat-date-range-picker 
+                                        #picker 
+                                        [dateClass]="dateClass" 
+                                        panelClass="custom-datepicker">
+                                    </mat-date-range-picker>
+                                </mat-form-field>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="table-item">
+                        <label>Check In | Check Out</label>
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="background-color: rgba(255, 87, 34, 0.1); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                       
+                        <div>
+                            <p style="margin: 0; color: #333; font-size: 15px; font-weight: 600;">
+                                <span style="color: #ff5722;">{{ reservationForm.value.checkin | date:'MMM d, y'  }}</span>
+                                <span *ngIf="reservationForm.value.checkin && reservationForm.value.checkout"> → </span>
+                                <span style="color: #ff5722;">{{ reservationForm.value.checkout | date:'MMM d, y'  }}</span>
+                            </p>
+                            <p style="margin: 3px 0 0; color: #666; font-size: 14px;" *ngIf="nightsCount">
+                                <strong>{{ nightsCount }}</strong> night<span *ngIf="nightsCount > 1" style="color: #888;">s</span> stay
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                    <div >
+                      <ul class="amenities">
+                        <li *ngFor="let service of services"> <input type="checkbox" 
+                          class="form-check-input" 
+                          [value]="service.price" 
+                          (change)="onServiceChange(service.price, $event)"
+                          id="service-{{service.name}}"
+                          > {{ service.name }}<span style="color: #ff5722; font-weight: 500; font-size: 14px; margin-left: 22px;">+${{ service.price }}</span></li>
+                      
+                      </ul>
+                  </div>
+                    <div class="table-item">
+                        <div class="price-summary" style="background-color: #fff; padding: 25px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                            <h4 style="margin-top: 0; margin-bottom: 16px; color: #333; font-weight: 600; font-size: 18px;">Price Summary</h4>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px;">
+                                <span>${{ room.price }} x {{ nightsCount || 0 }} night<span *ngIf="nightsCount > 1">s</span></span>
+                                <span>${{ (room.price * nightsCount) || 0 }}</span>
+                            </div>
+                            <hr style="border: none; height: 1px; background-color: #eee; margin: 15px 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px;">
+                                <span>Selected Services</span>
+                                <span>${{ selectedServicesPrice || 0 }}</span>
+                            </div>
+                            <hr style="border: none; height: 1px; background-color: #eee; margin: 15px 0;">
+                            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; color: #333; padding-top: 5px;">
+                                <span>Total</span>
+                                <span style="color: #ff5722; font-size: 20px;">${{ (room.price * nightsCount) + selectedServicesPrice || 0 }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-item">
+                        <div *ngIf="isLoggedIn">
+                            <button type="submit" class="btn" style="width: 100%; padding: 16px; background-color: #ff5722; color: white; border: none; border-radius: 8px; font-size: 17px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 8px rgba(255,87,34,0.3);" [disabled]="reservationForm.invalid">
+                                CONFIRM RESERVATION
+                            </button>
+                        </div>
+
+                        <div *ngIf="!isLoggedIn">
+                            <button type="button" style="width: 100%; padding: 16px; background-color: #ff5722; color: white; border: none; border-radius: 8px; font-size: 17px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 8px rgba(255,87,34,0.3);" routerLink="/login">
+                                LOG IN TO MAKE A RESERVATION
+                            </button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </form>  
+            </div>
+
+            </div>
+            <div class="sidebar-support">
+              <h3>Help and Support</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut arnare</p>
+              <p><i class="fa fa-phone"></i> 977 - 222 - 444 - 666</p>
+            </div>
+            <div class="sidebar-room">
+              <div class="sr-image">
+                <img src="images/sr1.jpg" alt="image" />
+              </div>
+              <div class="room-title sr-content">
+                <h3>Super Deluxe</h3>
+                <p>$1200/Night</p>
+                <div class="deal-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- details Ends -->
+
+  <!-- related room starts -->
+  <section class="related-rooms">
+    <div class="container">
+      <div class="section-title">
+        <h2>Explore <span>Rooms</span></h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur
+          turpis
+        </p>
+      </div>
+      <div class="room-outer">
+        <div class="row team-slider">
+          <div class="col-md-4">
+            <div class="room-item">
+              <div class="room-image">
+                <img src="images/room1.jpg" alt="image" />
+              </div>
+              <div class="room-content">
+                <div class="room-title">
+                  <h4>Super Deluxe</h4>
+                  <p><i class="fa fa-tag"></i> $1000/Night</p>
+                  <div class="deal-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                  </div>
+                </div>
+                <div class="room-services mar-bottom-15">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-wifi" aria-hidden="true"></i> Quick Service</div>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
+                <div class="room-btns">
+                  <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
+                  <a href="#" class="btn btn-orange">BOOK NOW</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="room-item">
+              <div class="room-image">
+                <img src="images/room2.jpg" alt="image" />
+              </div>
+              <div class="room-content">
+                <div class="room-title">
+                  <h4>Junior Suite</h4>
+                  <p><i class="fa fa-tag"></i> $500/Night</p>
+                  <div class="deal-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                  </div>
+                </div>
+                <div class="room-services mar-bottom-15">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-wifi" aria-hidden="true"></i> Quick Service</div>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
+                <div class="room-btns">
+                  <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
+                  <a href="#" class="btn btn-orange">BOOK NOW</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="room-item">
+              <div class="room-image">
+                <img src="images/room3.jpg" alt="image" />
+              </div>
+              <div class="room-content">
+                <div class="room-title">
+                  <h4>Executive Suite</h4>
+                  <p><i class="fa fa-tag"></i> $8120/Night</p>
+                  <div class="deal-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                  </div>
+                </div>
+                <div class="room-services mar-bottom-15">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-wifi" aria-hidden="true"></i> Quick Service</div>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
+                <div class="room-btns">
+                  <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
+                  <a href="#" class="btn btn-orange">BOOK NOW</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+      <div class="section-btn pad-top-30">
+        <a href="#" class="btn btn-black">EXPLORE ALL ROOMS</a>
+      </div>
+    </div>
+  </section>
+  <!-- related room Ends -->
+
+  <!-- Footer Starts -->
+  <footer>
+    <div class="footer-top pad-bottom-20">
+      <div class="container">
+        <div class="footer-logo text-center">
+          <img src="images/logo.png" alt="Image" />
+        </div>
+        <div class="footer-content">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mar-bottom-30">
+              <div class="footer-about">
+                <h4>Company Info</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius tellus vitae justo blandit ultrices.</p>
+              </div>
+              <div class="footer-payment">
+                <h4>We Accept</h4>
+                <ul>
+                  <li><img src="images/icons/visa.png" alt="image" /></li>
+                  <li><img src="images/icons/mastercard.png" alt="image" /></li>
+                  <li><img src="images/icons/americanexpress.png" alt="image" /></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mar-bottom-30">
+              <div class="quick-links">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Rooms</a></li>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Gallery</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mar-bottom-30">
+              <div class="Rooms">
+                <h4>Rooms</h4>
+                <ul>
+                  <li><a href="#">Single Rooms</a></li>
+                  <li><a href="#">Double Rooms</a></li>
+                  <li><a href="#">Studio Rooms</a></li>
+                  <li><a href="#">Kingsize Rooms</a></li>
+                  <li><a href="#">Presidentsuite Rooms</a></li>
+                  <li><a href="#">Luxury Kings Rooms</a></li>
+                  <li><a href="#">Connecting Rooms</a></li>
+                  <li><a href="#">Murphy Rooms</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mar-bottom-30">
+              <div class="footer-contact">
+                <h4>Contact info</h4>
+                <ul>
+                  <li>Tel: 977-222-444-6666</li>
+                  <li>Email: infohotux.com.np</li>
+                  <li>Fax: 977-222-444-666</li>
+                  <li>Address: 445 Mount Eden Road, Sundarbasti, Chakrapath</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright pad-bottom-20">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mar-bottom-10">
+            <div class="copyright-content">
+              <p>Copyright 2019. Made with <span>♥</span>. All Rights Reserved. <a href="#">Hotux</a></p>
+              <ul>
+                <li>
+                  <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 mar-bottom-10">
+            <div class="tripadvisor-logo text-center">
+              <img src="images/tripadvisor.png" alt="image" />
+            </div>
+          </div>
+          <div class="col-lg-4 mar-bottom-10">
+            <div class="copyright-links mar-bottom-20">
+              <ul>
+                <li><a href="#">Accomodations</a></li>
+                <li><a href="#">Book Now</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+              </ul>
+            </div>
+            <div class="playstore-links">
+              <img src="images/icons/appstore.png" alt="image" class="mar-right-10" />
+              <img src="images/icons/googleplay.png" alt="image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Ends -->

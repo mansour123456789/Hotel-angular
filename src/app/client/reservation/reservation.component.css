@@ -1,0 +1,183 @@
+.mat-datepicker-content .mat-calendar {
+    height: auto !important;
+    width: 100% !important;
+  }
+  
+  ::ng-deep .custom-datepicker {
+    position: relative !important;
+    transform: none !important;
+    overflow: visible !important;
+    margin-top: 10px;
+    box-shadow: none !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+  }
+  
+  ::ng-deep button.mat-calendar-body-cell.highlighted-date {
+    background-color: grey !important;  /* Yellow background */
+    color: white !important;  /* White text */
+    border-radius: 50%;
+  }
+  ::ng-deep .custom-datepicker .mat-calendar {
+    transform: scale(1.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  ::ng-deep .mat-calendar-body-selected {
+    background-color: #ff5722 !important;
+    border-radius: 999px !important;
+  }
+  
+  ::ng-deep .mat-calendar-body-in-range::before {
+    background: rgba(255, 87, 34, 0.15);
+  }
+  
+  ::ng-deep .mat-calendar-body-in-range .mat-calendar-body-cell-content {
+    background-color: rgba(255, 87, 34, 0.05);
+    border-radius: 0;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #e0e0e0;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #ff5722;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline:hover .mat-form-field-outline {
+    color: #ff5722;
+    opacity: 0.8;
+  }
+  
+  /* Improve the input field appearance */
+  ::ng-deep .mat-form-field {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+  
+  ::ng-deep .mat-form-field:hover, .mat-form-field.mat-focused {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* Style for the calendar icon */
+  .mat-datepicker-toggle {
+    color: #ff5722 !important;
+  }
+  ::ng-deep .selected-range .mat-calendar-body-cell-content {
+    background-color: #ff5722 !important;
+    border-radius: 50%;
+  }
+  ::ng-deep .mat-datepicker-content {
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  /* Star rating styling */
+  ::ng-deep .star {
+    transition: color 0.2s ease;
+  }
+  ::ng-deep .star.active {
+    color: #ffc107;
+  }
+  ::ng-deep .star:hover {
+    color: #ffc107;
+  }
+  
+  /* Review text formatting */
+  ::ng-deep .comment-item p {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  ::ng-deep .mat-calendar {
+    border-radius: 12px;
+  }
+  ::ng-deep .custom-datepicker .mat-calendar {
+    transform: scale(1.1);
+  }
+  ::ng-deep .mat-calendar-body-selected {
+    background-color: #ff5722 !important;
+  }
+  ::ng-deep .mat-calendar-body-in-range::before {
+    background: rgba(255, 87, 34, 0.2);
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #ff5722;
+  }
+  ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #ff5722;
+  }
+   .reservation-container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+    
+    .additional-services {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .price-summary {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .price-summary h3 {
+      margin-bottom: 10px;
+    }
+    
+    .price-summary .total {
+      font-weight: bold;
+      color: red;
+    }
+    
+    .confirm-btn {
+      background: #ff5722;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .confirm-btn:hover {
+      background: #e64a19;
+    }
+    mat-date-range-input input {
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      height: 200px;
+      margin-top: 500px;
+  }
+  ::ng-deep .mat-calendar {
+      background-color: #ffffff !important;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important; /* Optional: Add shadow for better visibility */
+      border-radius: 10px; /* Adjust the value for more or less rounding */
+  
+  }
+  
+  ::ng-deep .mat-calendar-body {
+      background-color: #ffffff !important;
+  
+  }
+  
+  ::ng-deep .mat-datepicker-content {
+      background-color: #ffffff !important;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important; /* Optional: Add shadow for better visibility */
+      border-radius: 10px; /* Adjust the value for more or less rounding */
+  }
+  

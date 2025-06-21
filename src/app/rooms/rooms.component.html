@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+<section class="breadcrumb-outer">
+  <div class="container">
+      <div class="breadcrumb-content">
+          <h2>Room LIST</h2>
+      </div>
+  </div>
+</section>
+
+
+<section class="room-list">
+    
+   
+      <div class="list-content" >
+        <div class="row" >
+
+
+         
+            
+          <div class="col-lg-4 col-md-6" *ngFor="let room of rooms" >
+            <div class="room-item">
+              <div class="room-image">
+                <img [src]="room.thumbnail || 'assets/images/default-room.jpg'" alt="image" />
+              </div>
+              <div class="room-content">
+                <div class="room-title">
+                  <h4>{{ room.name }}</h4>
+                  <p><i class="fa fa-tag"></i>${{ room.price }} / Night</p>
+                  <div class="deal-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                  </div>
+                </div>
+                <div class="room-services mar-bottom-15">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-bed" aria-hidden="true"></i> {{ room.bednbr }} Bedrooms</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="fa fa-wifi" aria-hidden="true"></i> Quick Service</div>
+                  </div>
+                </div>
+                <p>{{ room.description }}{{ room.id }}.</p>
+                <div class="room-btns">
+                  <a [routerLink]="['../client/reservation', room.id]" class="btn btn-black mar-right-10">VIEW DETAILS</a>
+                  <a href="#" class="btn btn-orange">BOOK NOW</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+       
+          </div>
+      
+   
+      <ng-template #noRooms>
+        <p class="text-center">No rooms available at the time.</p>
+    </ng-template>
+    </div>
+      <nav class="pagination-content text-center">
+        <ul class="pagination">
+          <li class="page-item">
+            <a href="#" class="page-link"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+          </li>
+          <li class="page-item active"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">...</a></li>
+          <li class="page-item"><a href="#" class="page-link">10</a></li>
+          <li>
+            <a href="#" class="page-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </nav>
+   
+  </section>
+
+
+
+
+

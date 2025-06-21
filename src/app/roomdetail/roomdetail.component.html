@@ -1,0 +1,144 @@
+<app-navbar></app-navbar>
+
+
+    <!-- breadcrumb Starts -->
+    <section class="breadcrumb-outer">
+        <div class="container">
+          <div class="breadcrumb-content">
+            <h2>Room Details Full Width</h2>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Room Details 2</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
+      <!-- breadcrumb Ends -->
+  
+      <!-- details starts-->
+      <section class="details">
+        <div class="container">
+          <div class="detail-slider">
+            <div class="slider-1 slider-for">
+              <div class="detail-slider-item">
+                <img [src]="room.thumbnail || 'assets/images/default-room.jpg'" alt="image" />
+              </div>
+             </div>
+        
+          </div>
+          <div class="detail-content">
+            <div class="detail-title">
+              <div class="title-left">
+                <h3>{{ room.name }} Room</h3>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </div>
+              <div class="title-right pull-right">
+                <ul>
+                  <li class="facebook"><i class="fab fa-facebook"></i></li>
+                  <li class="twitter"><i class="fab fa-twitter"></i></li>
+                  <li class="linkedin"><i class="fab fa-linkedin"></i></li>
+                  <li class="pinterest"><i class="fab fa-pinterest"></i></li>
+                </ul>
+                <div class="title-price">
+                  <h3>${{ room.price }}<span>/Night</span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="detail-overview">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="overview-outer">
+                    <div class="overview-content mar-bottom-30">
+                      <h4>Overview</h4>
+                      <p>
+                        {{ room.description }}   </p>
+                      
+                    </div>
+                    <div class="price-table">
+                      <h4>Price and Rates(/Night)</h4>
+                      <table class="table table-bordered mar-0">
+                        <thead>
+                          <tr>
+                            <td>Sun</td>
+                            <td>Mon</td>
+                            <td>Tues</td>
+                            <td>Wed</td>
+                            <td>Thurs</td>
+                            <td>Fri</td>
+                            <td>Sat</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                            <td>${{ room.price }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="overwiew-map">
+                    <div id="map" style="height: 357px; width: 100%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- details Ends-->
+  
+
+      <!-- detail review starts -->
+      <section class="detail-reviews">
+        <div class="container">
+          <div class="section-title">
+            <h2>Explore <span>Reviews</span></h2>
+          </div>
+          <div class="review-outer">
+            <ul>
+            
+              <li *ngFor="let review of reviews">
+                <div class="review-item">
+                  <div class="review-image">
+                    <img [src]="review.photo" alt="image" />
+                  </div>
+                  <div class="review-content">
+                    <h5>M{{ review.firstname || 'Guest' }} {{ review.lastname || 'User' }}  {{ (review.firstname?.[0] || 'G') + (review.lastname?.[0] || 'U') }}</h5>
+                    <a (click)="deleteReview(review.reviewid)" *ngIf="(isLoggedIn && (review.userid === currentUser.id ) || (admin))"><i class="fa fa-reply" aria-hidden="true" ></i> Reply</a>
+                  
+                    <div class="rating" style="color: #ff9800; font-size: 18px; justify-self: end;">
+                        <p class="date">{{ review.createdAt | date:'MMM d, y' }} <span *ngFor="let star of [1,2,3,4,5]">
+                            {{ star <= review.rating ? '★' : '☆' }}
+                        </span><span style="color: #666; font-size: 15px; margin-left: 5px;">{{ review.rating }}.0</span></p>
+                       
+                        
+                    </div>
+                    <p>
+                        {{ review.title }}.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+       
+        </div>
+      </section>
+      <!-- detail review Ends -->
+  

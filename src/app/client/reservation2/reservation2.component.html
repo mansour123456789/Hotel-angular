@@ -1,0 +1,137 @@
+
+
+
+<app-navbar></app-navbar>
+
+
+
+
+  <section class="breadcrumb-outer">
+      <div class="container">
+          <div class="breadcrumb-content">
+              <h2>MAKE RESERVATION</h2>
+          </div>
+      </div>
+  </section>
+  
+  <section class="content">
+    <div class="container">
+      <div class="booking">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="booking-content">
+              <div class="booking-image">
+                <img [src]="reservation.room.thumbnail" alt="Room Image" />
+                <div class="booking-title">
+                  <div class="title-left">
+                    <h3>{{reservation.room.name}}</h3>
+                  </div>
+                  <div class="title-right">
+                    <div class="title-price">
+                      <h4>{{reservation.room.price}}<span>/Night</span></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="booking-desc">
+                <p>{{reservation.room.description}}</p>
+                <!--
+                <div class="amenities">
+                  <div class="amenity">
+                    <i class="fas fa-wifi"></i>
+                    <span>Free WiFi</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-coffee"></i>
+                    <span>Breakfast Included</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-swimming-pool"></i>
+                    <span>Pool Access</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-parking"></i>
+                    <span>Free Parking</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-spa"></i>
+                    <span>Spa Access</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Room Service</span>
+                  </div>
+                </div>
+                -->
+                <a href="#" [routerLink]="['/reservation', reservation.room.id]" class="cta-button">Modify Reservation</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="detail-sidebar">
+              <div class="sidebar-reservation">
+                <h3>Your Reservation <pre></pre></h3>
+                <div class="reservation-detail">
+                  <div class="rd-top">
+                    <div class="rd-box">
+                      <label>Check in</label>
+                      <p class="bold">{{ reservation.checkin | date: 'dd' }}</p>
+                      <p>{{ reservation.checkin | date: 'MMMM' }}<br>{{ reservation.checkin | date: 'EEEE' }}</p>
+                    </div>
+                    <div class="rd-box">
+                      <label>Check Out</label>
+                      <p class="bold">{{ reservation.checkout | date: 'dd' }}</p>
+                      <p>{{ reservation.checkout | date: 'MMMM' }}<br>{{ reservation.checkout | date: 'EEEE' }}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="rd-top">
+                    <div class="rd-box">
+                      <p class="bold">{{reservation.room.bednbr}}</p>
+                      <p>Number of Beds</p>
+                    </div>
+                    <div class="rd-box">
+                      <p class="bold">{{nightsCount}}</p>
+                      <p>Nights</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <table class="reservation-table table">
+                  <tbody>
+                    <tr>
+                      <td>Rate x 3 Nights</td>
+                      <td>${{reservation.room.price}} x {{nightsCount}}</td>
+                    </tr>
+                    <tr>
+                      <td>Resort Fee</td>
+                      <td>$45</td>
+                    </tr>
+                    <tr>
+                      <td>Taxes</td>
+                      <td>$92</td>
+                    </tr>
+                  </tbody>
+                  
+                  <tfoot>
+                    <tr>
+                      <td>Total</td>
+                      <td>{{reservation.price}}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+                
+                <!-- PayPal Button Integration -->
+                <div class="paypal-button">
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
